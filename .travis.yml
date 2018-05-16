@@ -7,6 +7,7 @@ branches:
  - master
 
 script:
+ - cd project
  - python readsettings.py
 
 notifications:
