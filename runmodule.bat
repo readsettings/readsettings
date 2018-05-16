@@ -5,7 +5,7 @@ cls
 echo Executing readjson.py ...
 echo.
 
-python readjson.py
+python readsettings.py
 
 echo.
 echo Execution Complete

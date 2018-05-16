@@ -1,12 +1,14 @@
-import json
-from pprint import pprint
+def create(newfilepath="appconfig.settings"):
+    f = open(newfilepath,"w+")
 
-filename = "testfile.json"
+def read(filepath="appconfig.settings", valuename="setting"):
+    with open(filepath, 'r') as myfile:
+        lines = myfile.readlines()
+    for i in range(len(lines) + 1):
+        if lines[i - 1].split(' ')[0] == valuename:
+            return str(str(lines[i - 1])[len(str(lines[i - 1].split(' ')[0])) + 1:][0])
 
-#Read JSON data into the datastore variable
-if filename:
-    with open(filename, 'r') as f:
-        datastore = json.load(f)
+def write(filepath="appconfig.settings", newvaluename="setting"):
+    pass
 
-#Use the new datastore datastructure
-print(pprint(datastore["office"]))
+print(read("appconfig.settings", "line3"))
