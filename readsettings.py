@@ -1,5 +1,10 @@
+from os import remove
+
 def create(newsettingspath="appconfig.settings"):
     f = open(newsettingspath,"w+")
+
+def remove(settingspath="appconfig.settings"):
+    os.remove(str(settingspath))
 
 def read(settingspath="appconfig.settings", valuename="setting"):
     with open(settingspath, 'r') as myfile:
