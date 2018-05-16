@@ -2,7 +2,7 @@
 title ReadJson Tester
 cls
 
-echo Executing readjson.py ...
+echo Executing readsettings.py ...
 echo.
 
 python readsettings.py
