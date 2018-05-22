@@ -1,4 +1,5 @@
 import readsettings
+import sys
 
 print("Welcome to the ReadSettings For Python wizard!")
 print("For help, type 'help'")
@@ -60,6 +61,8 @@ def start():
         filename = input(
             "What's the file name? ")
         print(readsettings.rawlines(filename))
+    elif chosen == 'exit':
+        	sys.exit()
     else:
         print("Invalid command entered (For help, type 'help')")
 

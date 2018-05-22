@@ -1,17 +1,5 @@
-# Setup Code
-
 from os import remove as rm
 from os import rename as rn
-
-
-def replace_line(file_name, line_num, text):
-    lines = open(file_name, 'r').readlines()
-    lines[line_num] = text
-    out = open(file_name, 'w')
-    out.writelines(lines)
-    out.close()
-
-# Functions
 
 
 def newfile(newsettingspath="appconfig.settings"):
@@ -44,8 +32,12 @@ def changevalue(settingspath="appconfig.settings", valuename="setting", newvalue
         lines = myfile.readlines()
     for i in range(len(lines) + 1):
         if lines[i - 1].split(' ')[0] == valuename:
-            replace_line(settingspath, i - 1, str(valuename) +
-                         ' ' + str(newvalue) + '\n')
+            lines = open(settingspath, 'r').readlines()
+            lines[i - 1] = str(valuename) + ' ' + \
+                str(newvalue) + '\n'
+            out = open(settingspath, 'w')
+            out.writelines(lines)
+            out.close()
             break
 
 
@@ -54,8 +46,12 @@ def changevaluename(settingspath="appconfig.settings", valuename="setting", newn
         lines = myfile.readlines()
     for i in range(len(lines) + 1):
         if lines[i - 1].split(' ')[0] == valuename:
-            replace_line(settingspath, i - 1, str(newname) + ' ' +
-                         str((lines[i - 1])[(len(str(lines[i - 1]).split(' ')[0]) + 1):]))
+            lines = open(settingspath, 'r').readlines()
+            lines[i - 1] = str(newname) + ' ' + str((lines[i - 1])
+                                                    [(len(str(lines[i - 1]).split(' ')[0]) + 1):])
+            out = open(settingspath, 'w')
+            out.writelines(lines)
+            out.close()
             break
 
 
