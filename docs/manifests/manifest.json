@@ -1,6 +1,7 @@
 {
-  "name": "ReadSettings",
   "short_name": "ReadSettings",
+  "name": "ReadSettings For Python",
+
   "icons": [{
       "src": "/images/favicons/android-chrome-36x36.png",
       "sizes": "36x36",
@@ -47,8 +48,9 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#fafafa",
-  "background_color": "#fafafa",
-  "start_url": "/?utm_source=homescreen",
-  "display": "standalone"
+
+  "background_color": "#FAFAFA",
+  "display": "standalone",
+  "theme_color": "#3F51B5",
+  "start_url": "/?utm_source=homescreen"
 }
