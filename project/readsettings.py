@@ -6,12 +6,12 @@ def newfile(newsettingspath="appconfig.settings"):
     f = open(newsettingspath, "w+")
 
 
-def removefile(settingspath="appconfig.settings"):
-    rm(str(settingspath))
-
-
 def renamefile(settingspath="appconfig.settings", newfilename="appconfig.settings"):
     rn(str(settingspath), str(newfilename))
+
+
+def removefile(settingspath="appconfig.settings"):
+    rm(str(settingspath))
 
 
 def newvalue(settingspath="appconfig.settings", newvaluename="setting", value="Nothing"):

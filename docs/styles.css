@@ -1,7 +1,13 @@
+.prettyprint {
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .demo-ribbon {
   width: 100%;
   height: 40vh;
-  background-color: #3f51b5;
+  background-color: #3F51B5;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -26,7 +32,7 @@
 
 .demo-content {
   border-radius: 2px;
-  padding: 56px 56px;
+  padding: 80px 56px;
   margin-bottom: 80px;
 }
 

@@ -12,13 +12,17 @@ def start():
     print('', end='\n')
 
     if chosen == 'help':
-        print("Help coming soon!")
+        print("new file | Create a new settings file")
+        print("remove file | Remove an existing settings file")
+        print("rename file | Rename an existing settings file")
+        print("new value | Create a new value in an existing settings file")
+        print("read value | Read a value in an existing settings file")
+        print("change value | Change a value in an existing settings file")
+        print("change value name | Change the name of a value in an existing settings file")
+        print("raw lines | Fetch the raw content of an existing settings file")
     elif chosen == 'new file':
         filename = input("What's the file name? ")
         readsettings.newfile(filename)
-    elif chosen == 'remove file':
-        filename = input("What's the file name? ")
-        readsettings.removefile(filename)
     elif chosen == 'rename file':
         filename = input("What's the file name? ")
         newfilename = input(
@@ -27,6 +31,9 @@ def start():
             print("You need to provide different names!")
         else:
             readsettings.removefile(filename)
+    elif chosen == 'remove file':
+        filename = input("What's the file name? ")
+        readsettings.removefile(filename)
     elif chosen == 'new value':
         filename = input(
             "What's the file name? ")
@@ -62,7 +69,7 @@ def start():
             "What's the file name? ")
         print(readsettings.rawlines(filename))
     elif chosen == 'exit':
-        	sys.exit()
+        sys.exit()
     else:
         print("Invalid command entered (For help, type 'help')")
 
