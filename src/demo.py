@@ -22,7 +22,7 @@ def start():
             "Get value    | Get a value in an existing settings file                [type: get]"
         )
         print(
-            "Rename value | Change the name of a value in an existing settings file [type: rename]"
+            "Rename setting | Change the name of a value in an existing settings file [type: rename]"
         )
         print(
             "Raw content  | Fetch the raw content of an existing settings file      [type: raw]"
@@ -49,7 +49,7 @@ def start():
         if value_name == new_value_name:
             print("You need to provide different names!")
         else:
-            readsettings.rename_value(file_name, value_name, new_value_name)
+            readsettings.rename_setting(file_name, value_name, new_value_name)
     elif chosen == "raw":
         filename = input("What's the file name? ")
         print("The raw content is: " + str(readsettings.raw_content(filename)))

@@ -7,19 +7,19 @@ def fresh_file(settings_path="appconfig.json"):
 
 
 def set_value(settings_path="appconfig.json",
-              value_name="setting",
+              setting_name="setting",
               value_content="value"):
     with open(settings_path, "r") as json_file:
         data = json.load(json_file)
 
-    data[value_name] = value_content
+    data[setting_name] = value_content
     with open(settings_path, "w") as outfile:
         json.dump(data, outfile)
 
 
-def rename_value(settings_path="appconfig.json",
-                 value_name="setting",
-                 new_value_name="renamed_setting"):
+def rename_setting(settings_path="appconfig.json",
+                 setting_name="setting",
+                 new_setting_name="renamed_setting"):
     with open(settings_path, "r") as json_file:
         data = json.load(json_file)
         data[new_value_name] = data.pop(value_name)
@@ -28,19 +28,19 @@ def rename_value(settings_path="appconfig.json",
         json.dump(data, outfile)
 
 
-def remove_value(settings_path="appconfig.json", value_name="setting"):
+def remove_setting(settings_path="appconfig.json", setting_name="setting"):
     with open(settings_path, "r") as json_file:
         data = json.load(json_file)
-        data.pop(value_name)
+        data.pop(setting_name)
 
     with open(settings_path, "w") as outfile:
         json.dump(data, outfile)
 
 
-def get_value(settings_path="appconfig.json", value_name="setting"):
+def get_value(settings_path="appconfig.json", setting_name="setting"):
     with open(settings_path, "r") as json_file:
         data = json.load(json_file)
-        return data[value_name]
+        return data[setting_name]
 
 
 def raw_content(settings_path="appconfig.json"):

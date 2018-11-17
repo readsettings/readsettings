@@ -81,7 +81,22 @@ readsettings.fresh_file(settings_path)
         <h4 class="mdc-typography--headline4">Create or change of a setting</h4>
         <p class="mdc-typography--body1">This function creates or changes a setting.</p>
         <pre class="prettyprint lang-python">
-readsettings.set_value(settings_path, value_name, value_content)
+readsettings.set_value(settings_path, setting_name, value_content)
+        </pre>
+        <h4 class="mdc-typography--headline4">Rename a setting</h4>
+        <p class="mdc-typography--body1">This function renames a setting.</p>
+        <pre class="prettyprint lang-python">
+readsettings.rename_setting(settings_path, setting_name, new_setting_name)
+        </pre>
+        <h4 class="mdc-typography--headline4">Get the value of a setting</h4>
+        <p class="mdc-typography--body1">This function returns the value of a setting.</p>
+        <pre class="prettyprint lang-python">
+readsettings.get_value(settings_path, setting_name)
+        </pre>
+        <h4 class="mdc-typography--headline4">Get the raw JSON</h4>
+        <p class="mdc-typography--body1">This function returns the raw JSON of the settings file.</p>
+        <pre class="prettyprint lang-python">
+readsettings.raw_content(settings_path)
         </pre>
     </main>
     <script async src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js'></script>
