@@ -2,146 +2,94 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>ReadSettings For Python</title>
-  <meta name="description" content="Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application.">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700'>
-  <link rel='stylesheet prefetch' href='https://code.getmdl.io/1.3.0/material.indigo-red.min.css'>
-  <link rel="stylesheet" href="styles.css">
+    <title>ROS URI Encoder</title>
+    <meta name="description" content="This is a tool which allows you to convert text into it's URI encoded counterpart and back.">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
-  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#212121">
-  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
-  <meta name="apple-mobile-web-app-title" content="ReadSettings For Python">
-  <meta name="application-name" content="ReadSettings For Python">
-  <meta name="msapplication-TileColor" content="#fafafa">
-  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+    <link rel="shortcut icon" href="favicon.ico" />
 
-  <meta name="theme-color" content="#fafafa">
+    <link rel='stylesheet' href='https://unpkg.com/material-components-web@0.41.1/dist/material-components-web.min.css'>
 
-  <meta property="og:image" content="/images/favicons/og-image.jpg">
-  <meta property="og:image:width" content="279">
-  <meta property="og:image:height" content="279">
-  <meta property="og:title" content="ReadSettings For Python">
-  <meta property="og:description" content="Welcome, Social Media User to ReadSettings For Python. Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application.">
-  <meta property="og:url" content="https://readsettings.richie-bendall.ml">
+    <style>
+        :root {
+            --mdc-theme-primary: #3f51b5;
+            --mdc-theme-secondary: #f44336;
+            --mdc-theme-on-primary: #ffffff;
+            --mdc-theme-on-secondary: #ffffff;
+        }
 
-  <meta name="msapplication-config" content="/manifests/browserconfig.xml">
-  <link rel="manifest" href="/manifests/manifest.json">
+        :root body {
+            background-color: #3f51b5;
+        }
+
+        :root body main {
+            background-color: #ffffff;
+            border-radius: 4px;
+            position: absolute;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            min-width: calc(100vw - 80px);
+            min-height: calc(100vh - 80px);
+            padding: 20px;
+        }
+
+        pre.prettyprint, code.prettyprint {
+            border-width: 1px !important;
+            border-color: #bdbdbd !important;
+            border-radius: 5px;
+            padding: 10px;
+            padding-bottom: 0;
+            margin: 0;
+            border-style: solid !important;
+        }
+    </style>
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-themes-for-google-code-prettify@2.0.4/dist/themes/tomorrow.min.css">
 
 </head>
 
 <body>
 
-  <body>
-    </header>
-    <div class="demo-ribbon"></div>
-    <main class="demo-main mdl-layout__content">
-      <div class="demo-container mdl-grid">
-        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-        <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-          <div class="demo-crumbs mdl-color-text--grey-500">
-          </div>
-          <h2 style="text-align: center;">ReadSettings For Python</h2>
-          <p>Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application. At the moment, ReadSettings is compatible with Python 3 but support to more programming langauages may come in
-            the future.</p>
-
-          <h3>Installation</h3>
-          <p>Start by cloning the repository with Git (or downloading it)</p>
-
-          <pre class="prettyprint">
-git clone https://github.com/Richienb/readsettings-python.git
-          </pre>
-          <p>&nbsp;</p>
-          <p>Then move or copy <i>/project/py</i> into your project directory</p>
-          <pre class="prettyprint">
-:: Windows Batch Example
-cd project
-copy /V readsettings.py C:\Users\Richie Bendall\Desktop\Files\MyProject\readsettings.py
-          </pre>
-
-          <h3>Usage</h3>
-          <p>Remember to import readsettings first!</p>
-          <pre class="prettyprint">
+    <main class="mdc-typography">
+        <h1 class="mdc-typography--headline1">ReadSettings For Python</h1>
+        <p class="mdc-typography--body1">Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application. At the moment, ReadSettings is compatible with Python 3 but support to more programming langauages may come in the future.</p>
+        <a class="mdc-button mdc-button--outlined" target="_blank" rel="noopener" href="https://rawcdn.githack.com/Richienb/readsettings-python/5752aef06115423fd3b54ec25a1548618325d5f6/docs/index.html" data-mdc-auto-init="MDCRipple">Version 1.0 Documentation</a>
+        <p class="mdc-typography--caption">Version 2 is still work in progress. For now, use version 1.</p>
+        <h3 class="mdc-typography--headline3">Installation</h3>
+        <p class="mdc-typography--body-1">You can install ReadSetting for Python with pip.</p>
+        <pre class="prettyprint lang-bsh">
+pip install readsettings
+        </pre>
+        <h3 class="mdc-typography--headline3">Usage</h3>
+        <h4 class="mdc-typography--headline4">Importing</h4>
+        <p class="mdc-typography--body1">Simply include the following line at the top of your Python file.</p>
+        <pre class="prettyprint lang-python">
 import readsettings
-          </pre>
-          <p>&nbsp;</p>
-          <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">Command Name</th>
-                <th class="mdl-data-table__cell--non-numeric">Explaination</th>
-                <th class="mdl-data-table__cell--non-numeric">Syntax</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">New File</td>
-                <td class="mdl-data-table__cell--non-numeric">Create a new settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">newfile(newsettingspath)</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Rename File</td>
-                <td class="mdl-data-table__cell--non-numeric">Remove an existing settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">renamefile(settingspath, newfilename)</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Remove File</td>
-                <td class="mdl-data-table__cell--non-numeric">Rename an existing settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">removefile(settingspath="appconfig.settings")</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">New Value</td>
-                <td class="mdl-data-table__cell--non-numeric">Create a new value in an existing settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">newvalue(settingspath, newvaluename, value)</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Read Value</td>
-                <td class="mdl-data-table__cell--non-numeric">Read a value in an existing settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">readvalue(settingspath, valuename)</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Change Value</td>
-                <td class="mdl-data-table__cell--non-numeric">Change a value in an existing settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">changevalue(settingspath, valuename, newvalue)</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Change Value Name</td>
-                <td class="mdl-data-table__cell--non-numeric">Change the name of a value in an existing settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">changevaluename(settingspath, valuename, newname)</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Raw Lines</td>
-                <td class="mdl-data-table__cell--non-numeric">Fetch the raw content of an existing settings file</td>
-                <td class="mdl-data-table__cell--non-numeric">rawlines(settingspath)</td>
-              </tr>
-            </tbody>
-          </table>
-          <h3>Open Source</h3>
-          <p>ReadSettings For Python is open source on <a href="https://github.com/Richienb/readsettings-python">GitHub</a>.</p>
-          <p>
-            <a href="https://github.com/Richienb/readsettings-python/issues/new?template=bug_report.md">Request a feature</a> |
-            <a href="https://github.com/Richienb/readsettings-python/issues/new?template=feature_request.md">Report a bug</a> |
-            <a href="https://github.com/Richienb/readsettings-python/issues/new">Something else</a>
-          </p>
-          <p><strong>Continuous Integration Status</strong></p>
-          <a href="https://www.codefactor.io/repository/github/richienb/readsettings-python"><img src="https://www.codefactor.io/repository/github/richienb/readsettings-python/badge" alt="Code Quality"></a> <a href="https://travis-ci.org/Richienb/readsettings-python"><img src="https://travis-ci.org/Richienb/readsettings-python.svg?branch=master" alt="Build Status"></a>
-        </div>
-      </div>
+        </pre>
+        <h4 class="mdc-typography--headline4">Create or reset a settings file</h4>
+        <p class="mdc-typography--body1">This function creates or resets a settings file</p>
+        <pre class="prettyprint lang-python">
+readsettings.fresh_file(settings_path)
+        </pre>
+        <h4 class="mdc-typography--headline4">Create or change of a setting</h4>
+        <p class="mdc-typography--body1">This function creates or changes a setting.</p>
+        <pre class="prettyprint lang-python">
+readsettings.set_value(settings_path, value_name, value_content)
+        </pre>
     </main>
-    </div>
-  </body>
-
-  <script async src='https://code.getmdl.io/1.3.0/material.min.js'></script>
-  <script async defer src='https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert'></script>
+    <script async src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js'></script>
+    <script async src='https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js'></script>
+    <script src='https://unpkg.com/material-components-web@0.41.1/dist/material-components-web.min.js'></script>
+    <script>
+        window.mdc.autoInit();
+    </script>
 
 </body>
 
