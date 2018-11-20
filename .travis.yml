@@ -8,7 +8,7 @@ branches:
 
 script:
  - cd src
- - python -m readsettings
+ - python ./readsettings/__init__.py
 
 notifications:
   email: false
