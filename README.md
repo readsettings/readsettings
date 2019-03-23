@@ -1,6 +1,6 @@
 # ReadSettings For Python
 
-[![Build Status](https://img.shields.io/travis/Richienb/readsettings-python/master.svg?style=for-the-badge)](https://github.com/Richienb/readsettings-python)
+[![Build Status](https://img.shields.io/travis/Richienb/readsettings-python/master.svg?style=for-the-badge)](https://travis-ci.org/Richienb/readsettings-python)
 [![Code Quality](https://www.codefactor.io/repository/github/richienb/readsettings-python/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/richienb/readsettings-python)
 
 Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application.

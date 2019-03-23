@@ -1,12 +1,14 @@
+dist:             xenial
+
 language:         python
 
-python:           3.6
+python:           3.7
 
 before_script:
     - cd src
 
 script:
-    - python ./src/readsettings/__init__.py
+    - python ./readsettings/__init__.py
 
 notifications:
-    email:          false
+    email:        false
