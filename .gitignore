@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/linux,macos,python,windows
-# Edit at https://www.gitignore.io/?templates=linux,macos,python,windows
+# Created by https://www.gitignore.io/api/macos,linux,python,windows
+# Edit at https://www.gitignore.io/?templates=macos,linux,python,windows
 
 ### Linux ###
 *~
@@ -68,6 +68,8 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -128,6 +130,13 @@ ipython_config.py
 # pyenv
 .python-version
 
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don’t work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
 # celery beat schedule file
 celerybeat-schedule
 
@@ -161,21 +170,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-### Python Patch ###
-.venv/
-
-### Python.VirtualEnv Stack ###
-# Virtualenv
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-pip-selfcheck.json
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -201,4 +195,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/linux,macos,python,windows
+# End of https://www.gitignore.io/api/macos,linux,python,windows

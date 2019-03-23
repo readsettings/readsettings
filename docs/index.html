@@ -22,11 +22,11 @@
             --mdc-theme-on-primary: #ffffff;
             --mdc-theme-on-secondary: #ffffff;
         }
-        
+
         :root body {
             background-color: #fafafa;
         }
-        
+
         :root body .ribbon {
             top: 0;
             z-index: -1;
@@ -35,7 +35,7 @@
             height: 10rem;
             position: absolute;
         }
-        
+
         :root body .main-content {
             background-color: #ffffff;
             border-radius: 4px;
@@ -43,68 +43,68 @@
             padding: 20px;
             min-height: calc(100vh - 80px);
         }
-        
+
         :root body .main-content .theme-toggle {
             position: absolute;
             top: 10px;
             right: 30px;
         }
-        
+
         :root body .main-content a {
             color: #3f51b5;
         }
-        
+
         :root body .main-content::-moz-selection {
             background-color: #3f51b5;
             color: white;
         }
-        
+
         :root body .main-content::selection {
             background-color: #3f51b5;
             color: white;
         }
-        
+
         :root body.body--dark {
             background-color: #212121 !important;
         }
-        
+
         :root body.body--dark .main-content {
             color: white;
             background-color: #303030;
         }
-        
+
         :root body.body--dark .main-content a {
             color: #5c6bc0;
         }
-        
+
         :root body.body--dark .main-content::-moz-selection {
             background-color: #c5cae9;
             color: black;
         }
-        
+
         :root body.body--dark .main-content::selection {
             background-color: #c5cae9;
             color: black;
         }
-        
+
         :root body.body--animate-colours {
             transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         :root body.body--animate-colours .main-content,
         :root body.body--animate-colours a,
         :root body.body--animate-colours::-moz-selection {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transition-property: background-color, color;
         }
-        
+
         :root body.body--animate-colours .main-content,
         :root body.body--animate-colours a,
         :root body.body--animate-colours::selection {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transition-property: background-color, color;
         }
-        
+
         :root body pre.prettyprint,
         :root body code.prettyprint {
             border-width: 1px !important;
@@ -130,46 +130,54 @@
         <button class="theme-toggle mdc-fab mdc-fab--mini" aria-label="Toggle Theme Settings" data-mdc-auto-init="MDCRipple">
             <svg class="theme-toggle--svg mdc-fab__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" d="M0 0h24v24H0V0z" />
-                <path d="M11 7l-3.2 9h1.9l.7-2h3.2l.7 2h1.9L13 7h-2zm-.15 5.65L12 9l1.15 3.65h-2.3zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48z" />
+                <path
+                    d="M11 7l-3.2 9h1.9l.7-2h3.2l.7 2h1.9L13 7h-2zm-.15 5.65L12 9l1.15 3.65h-2.3zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48z" />
             </svg>
         </button>
         <h1 class="mdc-typography--headline2">ReadSettings For Python</h1>
-        <p class="mdc-typography--body1">Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application. At the moment, ReadSettings is compatible with Python 3 but support to more programming langauages may come in the future.</p>
+        <p class="mdc-typography--body1">Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application. At the moment, ReadSettings is compatible with Python 3 but support to more
+            programming langauages may come in the future.</p>
         <h3 class="mdc-typography--headline3">Installation</h3>
-        <p class="mdc-typography--body-1">You can install ReadSetting for Python with pip.</p>
+        <p class="mdc-typography--body-1">You can install ReadSettings for Python with pip.</p>
         <pre class="prettyprint lang-bsh">
 pip install readsettings
         </pre>
         <h3 class="mdc-typography--headline3">Usage</h3>
         <h4 class="mdc-typography--headline4">Importing</h4>
-        <p class="mdc-typography--body1">Simply include the following line at the top of your Python file.</p>
+        <p class="mdc-typography--body1">Here is some example code to setup the settings.</p>
         <pre class="prettyprint lang-python">
-import readsettings
-        </pre>
-        <h4 class="mdc-typography--headline4">Create or reset a settings file</h4>
-        <p class="mdc-typography--body1">This function creates or resets a settings file</p>
-        <pre class="prettyprint lang-python">
-readsettings.fresh_file(settings_path)
+from readsettings import ReadSettings
+settings = ReadSettings("mysettings.json")
         </pre>
         <h4 class="mdc-typography--headline4">Create or change of a setting</h4>
         <p class="mdc-typography--body1">This function creates or changes a setting.</p>
         <pre class="prettyprint lang-python">
-readsettings.set_value(settings_path, setting_name, value_content)
-        </pre>
-        <h4 class="mdc-typography--headline4">Rename a setting</h4>
-        <p class="mdc-typography--body1">This function renames a setting.</p>
-        <pre class="prettyprint lang-python">
-readsettings.rename_setting(settings_path, setting_name, new_setting_name)
+settings.set("name", "contents")
         </pre>
         <h4 class="mdc-typography--headline4">Get the value of a setting</h4>
         <p class="mdc-typography--body1">This function returns the value of a setting.</p>
         <pre class="prettyprint lang-python">
-readsettings.get_value(settings_path, setting_name)
+settings.get("name")
+        </pre>
+        <h4 class="mdc-typography--headline4">Rename a setting</h4>
+        <p class="mdc-typography--body1">This function renames a setting.</p>
+        <pre class="prettyprint lang-python">
+settings.ren("name", "newname")
+        </pre>
+        <h4 class="mdc-typography--headline4">Create or reset a settings file</h4>
+        <p class="mdc-typography--body1">When importing, the settings file is automatically created. However, you can still use this function create or reset a settings file.</p>
+        <pre class="prettyprint lang-python">
+settings.clear()
+        </pre>
+        <h4 class="mdc-typography--headline4">Change target settings file</h4>
+        <p class="mdc-typography--body1">You can use this function to change the settings file used. You can also set a boolean to also copy the old settings to the new file.</p>
+        <pre class="prettyprint lang-python">
+settings.change("newsettings.json", True)
         </pre>
         <h4 class="mdc-typography--headline4">Get the raw JSON</h4>
         <p class="mdc-typography--body1">This function returns the raw JSON of the settings file.</p>
         <pre class="prettyprint lang-python">
-readsettings.raw_content(settings_path)
+settings.raw()
         </pre>
     </main>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>

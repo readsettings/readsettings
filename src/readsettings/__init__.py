@@ -1,48 +1,63 @@
+"""Main ReadSettings file"""
 import json
+import os
 
 
-def fresh_file(settings_path="appconfig.json"):
-    with open(settings_path, "w") as file:
-        file.write("{}")
+class ReadSettings:
+    """Main ReadSettings class."""
 
+    def __init__(self, path):
+        """Initialise class."""
+        if not path:
+            self.path = "appconfig.json"
+        else:
+            self.path = path
 
-def set_value(settings_path="appconfig.json",
-              setting_name="setting",
-              value_content="value"):
-    with open(settings_path, "r") as json_file:
-        data = json.load(json_file)
+        if not os.path.isfile(path):
+            with open(path, "w") as file:
+                file.write("{}")
 
-    data[setting_name] = value_content
-    with open(settings_path, "w") as outfile:
-        json.dump(data, outfile)
+    def change(self, path, move=False):
+        """Change the target directory of the settings file."""
+        if move:
+            os.rename(self.path, path)
+        else:
+            if not os.path.isfile(path):
+                with open(path, "w") as file:
+                    file.write("{}")
 
+        self.path = path
 
-def rename_setting(settings_path="appconfig.json",
-                 setting_name="setting",
-                 new_setting_name="renamed_setting"):
-    with open(settings_path, "r") as json_file:
-        data = json.load(json_file)
-        data[new_value_name] = data.pop(value_name)
+    def clear(self):
+        """Clear a settings file."""
+        with open(self.path, "w") as file:
+            file.write("{}")
 
-    with open(settings_path, "w") as outfile:
-        json.dump(data, outfile)
+    def set(self, name, value):
+        """Set the value of a setting."""
+        with open(self.path, "r") as file:
+            data = json.load(file)
+            data[name] = value
 
+        with open(self.path, "w") as file:
+            json.dump(data, file)
 
-def remove_setting(settings_path="appconfig.json", setting_name="setting"):
-    with open(settings_path, "r") as json_file:
-        data = json.load(json_file)
-        data.pop(setting_name)
+    def rem(self, name):
+        """Remove a setting."""
+        with open(self.path, "r") as file:
+            data = json.load(file)
+            data.pop(name)
 
-    with open(settings_path, "w") as outfile:
-        json.dump(data, outfile)
+        with open(self.path, "w") as file:
+            json.dump(data, file)
 
+    def get(self, name):
+        """Get the value of a setting."""
+        with open(self.path, "r") as file:
+            data = json.load(file)
+            return data[name]
 
-def get_value(settings_path="appconfig.json", setting_name="setting"):
-    with open(settings_path, "r") as json_file:
-        data = json.load(json_file)
-        return data[setting_name]
-
-
-def raw_content(settings_path="appconfig.json"):
-    with open(settings_path, "r") as json_file:
-        return json.load(json_file)
+    def raw(self):
+        """Get the raw contents of the settings file."""
+        with open(self.path, "r") as file:
+            return json.load(file)

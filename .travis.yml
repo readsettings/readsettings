@@ -1,14 +1,12 @@
-language: python
+language:         python
 
-python:
- - 3.6.6
+python:           3.6
 
-branches:
- - master
+before_script:
+    - cd src
 
 script:
- - cd src
- - python ./readsettings/__init__.py
+    - python ./src/readsettings/__init__.py
 
 notifications:
-  email: false
+    email:          false
