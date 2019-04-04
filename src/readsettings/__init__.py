@@ -57,7 +57,7 @@ class ReadSettings:
             data = json.load(f)
             return data[name]
 
-    def raw(self):
+    def json(self):
         """Get the raw contents of the settings file."""
         with open(self.path, "r") as f:
             return json.load(f)
