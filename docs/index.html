@@ -13,21 +13,18 @@
 
     <link rel="shortcut icon" href="favicon.ico" />
 
-    <link rel="stylesheet" href="https://unpkg.com/material-components-web@1.0.1/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@1.1.0/dist/material-components-web.min.css">
 
     <style>
-        :root {
+        body {
             --mdc-theme-primary: #3f51b5;
             --mdc-theme-secondary: #f44336;
             --mdc-theme-on-primary: #ffffff;
             --mdc-theme-on-secondary: #ffffff;
-        }
-
-        :root body {
             background-color: #fafafa;
         }
-
-        :root body .ribbon {
+        
+        body .ribbon {
             top: 0;
             z-index: -1;
             background-color: #3f51b5;
@@ -35,78 +32,126 @@
             height: 10rem;
             position: absolute;
         }
-
-        :root body .main-content {
+        
+        body .main-content {
             background-color: #ffffff;
             border-radius: 4px;
-            margin: 20px;
-            padding: 20px;
-            min-height: calc(100vh - 80px);
+            margin: 1.5rem;
+            padding: 2rem;
+            min-height: calc(100vh - 7rem);
         }
-
-        :root body .main-content .theme-toggle {
+        
+        body .main-content .theme-toggle {
             position: absolute;
-            top: 10px;
-            right: 30px;
+            top: 0.5rem;
+            right: 3rem;
         }
-
-        :root body .main-content a {
+        
+        body .main-content a {
             color: #3f51b5;
         }
-
-        :root body .main-content::-moz-selection {
+        
+        body .main-content::-moz-selection {
             background-color: #3f51b5;
             color: white;
         }
-
-        :root body .main-content::selection {
+        
+        body .main-content::selection {
             background-color: #3f51b5;
             color: white;
         }
-
-        :root body.body--dark {
+        
+        body .main-content #carbonads {
+            margin-bottom: 1rem;
+            float: right;
+            border-radius: 6px;
+            box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+            font-family: Roboto, Helvetica, sans-serif;
+            line-height: 28px;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        body .main-content #carbonads:hover {
+            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+        }
+        
+        body .main-content #carbonads .carbon-wrap .carbon-img > img {
+            margin-right: 9px;
+            float: left;
+        }
+        
+        @media only screen and (max-width: 400px) {
+            body .main-content #carbonads .carbon-wrap .carbon-img > img {
+                width: auto;
+                max-width: 130px;
+                height: 50px;
+            }
+        }
+        
+        body .main-content #carbonads .carbon-wrap .carbon-text {
+            color: #637381;
+            font-weight: 300;
+            display: block;
+            font-size: 12px;
+            line-height: 15.96px;
+            margin-bottom: 0;
+            margin-top: 8px;
+            text-decoration: none;
+        }
+        
+        body .main-content #carbonads .carbon-poweredby {
+            color: #c5cdd0;
+            font-size: 8px;
+            font-weight: 500;
+            line-height: 10px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        
+        body.setting--dark {
             background-color: #212121 !important;
         }
-
-        :root body.body--dark .main-content {
+        
+        body.setting--dark .main-content {
             color: white;
             background-color: #303030;
         }
-
-        :root body.body--dark .main-content a {
+        
+        body.setting--dark .main-content a {
             color: #5c6bc0;
         }
-
-        :root body.body--dark .main-content::-moz-selection {
+        
+        body.setting--dark .main-content::-moz-selection {
             background-color: #c5cae9;
             color: black;
         }
-
-        :root body.body--dark .main-content::selection {
+        
+        body.setting--dark .main-content::selection {
             background-color: #c5cae9;
             color: black;
         }
-
-        :root body.body--animate-colours {
+        
+        body.setting--animate-colours {
             transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        :root body.body--animate-colours .main-content,
-        :root body.body--animate-colours a,
-        :root body.body--animate-colours::-moz-selection {
+        
+        body.setting--animate-colours .main-content,
+        body.setting--animate-colours a,
+        body.setting--animate-colours::-moz-selection {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transition-property: background-color, color;
         }
-
-        :root body.body--animate-colours .main-content,
-        :root body.body--animate-colours a,
-        :root body.body--animate-colours::selection {
+        
+        body.setting--animate-colours .main-content,
+        body.setting--animate-colours a,
+        body.setting--animate-colours::selection {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transition-property: background-color, color;
         }
-
-        :root body pre.prettyprint,
-        :root body code.prettyprint {
+        
+        body pre.prettyprint {
             border-width: 1px !important;
             border-color: #bdbdbd !important;
             border-radius: 5px;
@@ -127,16 +172,15 @@
 
     <div class="ribbon mdc-elevation--z4"></div>
     <main class="main-content mdc-typography mdc-elevation--z8">
+        <script async src="https://cdn.carbonads.com/carbon.js?serve=CK7I6K3E&amp;placement=wwwrichie-bendallml" id="_carbonads_js"></script>
         <button class="theme-toggle mdc-fab mdc-fab--mini" aria-label="Toggle Theme Settings" data-mdc-auto-init="MDCRipple">
             <svg class="theme-toggle--svg mdc-fab__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" d="M0 0h24v24H0V0z" />
-                <path
-                    d="M11 7l-3.2 9h1.9l.7-2h3.2l.7 2h1.9L13 7h-2zm-.15 5.65L12 9l1.15 3.65h-2.3zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48z" />
+                <path d="M11 7l-3.2 9h1.9l.7-2h3.2l.7 2h1.9L13 7h-2zm-.15 5.65L12 9l1.15 3.65h-2.3zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48z" />
             </svg>
         </button>
         <h1 class="mdc-typography--headline2">ReadSettings For Python</h1>
-        <p class="mdc-typography--body1">Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application. At the moment, ReadSettings is compatible with Python 3 but support to more
-            programming langauages may come in the future.</p>
+        <p class="mdc-typography--body1">Easily create, edit and remove a customized settings file which you can use for storing all of the settings for your application. At the moment, ReadSettings is compatible with Python 3 but support to more programming langauages may come in the future.</p>
         <h3 class="mdc-typography--headline3">Installation</h3>
         <p class="mdc-typography--body-1">You can install ReadSettings for Python with pip.</p>
         <pre class="prettyprint lang-bsh">
@@ -152,79 +196,75 @@ settings = ReadSettings("mysettings.json")
         <h4 class="mdc-typography--headline4">Create or change of a setting</h4>
         <p class="mdc-typography--body1">This function creates or changes a setting.</p>
         <pre class="prettyprint lang-python">
-settings.set("name", "contents")
+settings["name"] = "contents"
         </pre>
         <h4 class="mdc-typography--headline4">Get the value of a setting</h4>
         <p class="mdc-typography--body1">This function returns the value of a setting.</p>
         <pre class="prettyprint lang-python">
-settings.get("name")
+settings["name"]
         </pre>
-        <h4 class="mdc-typography--headline4">Rename a setting</h4>
-        <p class="mdc-typography--body1">This function renames a setting.</p>
+        <h4 class="mdc-typography--headline4">Delete a setting</h4>
+        <p class="mdc-typography--body1">This function deletes a setting.</p>
         <pre class="prettyprint lang-python">
-settings.ren("name", "newname")
+del settings["name"]
         </pre>
         <h4 class="mdc-typography--headline4">Create or reset a settings file</h4>
         <p class="mdc-typography--body1">When importing, the settings file is automatically created. However, you can still use this function create or reset a settings file.</p>
         <pre class="prettyprint lang-python">
 settings.clear()
         </pre>
-        <h4 class="mdc-typography--headline4">Change target settings file</h4>
-        <p class="mdc-typography--body1">You can use this function to change the settings file used. You can also set a boolean to also copy the old settings to the new file.</p>
-        <pre class="prettyprint lang-python">
-settings.change("newsettings.json", True)
-        </pre>
         <h4 class="mdc-typography--headline4">Get the JSON object</h4>
         <p class="mdc-typography--body1">This function returns the JSON object of the settings file.</p>
         <pre class="prettyprint lang-python">
-settings.raw()
+settings.json()
+        </pre>
+        <h4 class="mdc-typography--headline4">Toggle autosave</h4>
+        <p class="mdc-typography--body1">This function toggles the autosaving feature which is on by default.</p>
+        <pre class="prettyprint lang-python">
+settings.autosave(True)
+        </pre>
+        <h4 class="mdc-typography--headline4">Force save</h4>
+        <p class="mdc-typography--body1">This function forces a save on the settings file. Useful if autosave is off.</p>
+        <pre class="prettyprint lang-python">
+settings.save()
         </pre>
     </main>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
-    <script src="https://unpkg.com/material-components-web@1.0.1/dist/material-components-web.min.js"></script>
+    <script src="https://unpkg.com/material-components-web@1.1.0/dist/material-components-web.min.js"></script>
     <script>
         mdc.autoInit();
 
-        function handleTheme() {
+        String.prototype.cycle = function(arr) {
+            var i = arr.indexOf(this.toString());
+            if (i === -1) return undefined;
+            return arr[(i + 1) % arr.length];
+        };
+
+        var handleTheme = function handleTheme() {
             switch (localStorage.getItem("theme")) {
                 case "light":
-                    document.querySelector(".theme-toggle--svg").innerHTML =
-                        '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><circle cx="12" cy="12" r="2.5"/>';
-                    document.querySelector("body").classList.remove("body--dark");
+                    document.querySelector(".theme-toggle--svg").innerHTML = '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><circle cx="12" cy="12" r="2.5"/>';
+                    document.querySelector("body").classList.remove("setting--dark");
                     break;
-                case "dark":
-                    document.querySelector(".theme-toggle--svg").innerHTML =
-                        '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>';
-                    document.querySelector("body").classList.add("body--dark");
-                    break;
-                default:
-                    document.querySelector(".theme-toggle--svg").innerHTML =
-                        '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M11 7l-3.2 9h1.9l.7-2h3.2l.7 2h1.9L13 7h-2zm-.15 5.65L12 9l1.15 3.65h-2.3zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48z"/>';
-                    const hours = new Date().getHours();
-                    document.
-                    querySelector("body").
-                    classList.toggle("body--dark", hours <= 6 || hours >= 20);
-            }
 
-        }
+                case "dark":
+                    document.querySelector(".theme-toggle--svg").innerHTML = '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>';
+                    document.querySelector("body").classList.add("setting--dark");
+                    break;
+
+                default:
+                    document.querySelector(".theme-toggle--svg").innerHTML = '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M11 7l-3.2 9h1.9l.7-2h3.2l.7 2h1.9L13 7h-2zm-.15 5.65L12 9l1.15 3.65h-2.3zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48z"/>';
+                    var hours = new Date().getHours();
+                    document.querySelector("body").classList.toggle("setting--dark", hours <= 6 || hours >= 20 || window.matchMedia("(prefers-color-scheme: dark)").matches || window.matchMedia("(-ms-high-contrast: white-on-black)").matches);
+            }
+        };
 
         if (!localStorage.getItem("theme")) localStorage.setItem("theme", "auto");
         handleTheme();
-        document.querySelector("body").classList.add("body--animate-colours");
-
-        document.querySelector(".theme-toggle").addEventListener("click", () => {
-            switch (localStorage.getItem("theme")) {
-                case "light":
-                    localStorage.setItem("theme", "dark");
-                    break;
-                case "auto":
-                    localStorage.setItem("theme", "light");
-                    break;
-                default:
-                    localStorage.setItem("theme", "auto");
-            }
-
+        document.querySelector("body").classList.add("setting--animate-colours");
+        document.querySelector(".theme-toggle").addEventListener("click", function() {
+            localStorage.setItem("theme", localStorage.getItem("theme").cycle(["auto", "light", "dark"]));
             handleTheme();
         });
     </script>
