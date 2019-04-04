@@ -21,7 +21,7 @@ class ReadSettings:
 
     def autosave(self, option=None):
         """Configure autosaving"""
-        if option == None:
+        if option is None:
             self.autosave = not self.autosave
         else:
             self.autosave = option
@@ -29,8 +29,8 @@ class ReadSettings:
         
     def save(self):
         """Force a file save"""
-        with open(self.path, "w") as file:
-            json.dump(self.data, file)
+        with open(self.path, "w") as f:
+            json.dump(self.data, f)
         
         
     def clear(self):
