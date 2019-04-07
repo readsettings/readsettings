@@ -20,11 +20,7 @@ jobs:
               - pip install sphinx python-docs-theme
 
           script:
-              - mkdocs build --verbose --clean --strict
-              - cd docs-sphinx
-              - sphinx-build -b html rst html
-              - cp -a $TRAVIS_BUILD_DIR/docs-sphinx/html/. $TRAVIS_BUILD_DIR/site/commands
-              - touch $TRAVIS_BUILD_DIR/site/.nojekyll
+              - make html
 
           deploy:
               provider:            pages
@@ -34,7 +30,7 @@ jobs:
               name:                "ROS Bot"
               email:               "richiebendall@gmail.com"
               fqdn:                "readsettings.richie-bendall.ml"
-              local_dir:           site
+              local_dir:           build/html
 
           after_deploy:
               - |
