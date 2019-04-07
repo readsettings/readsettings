@@ -17,6 +17,9 @@ class ReadSettings:
 
     :type ext: string
     :param ext: Override the file type.
+    
+    :type autosave: boolean
+    :param autosave: Set the autosave behaviour. Default is True.
 
     :raises ValueError: Invalid file type provided!
 
@@ -26,8 +29,8 @@ class ReadSettings:
     'Hello World'
     """
     
-    def __init__(self, path, ext=None):
-        self._autosave = True
+    def __init__(self, path, ext=None, autosave=True):
+        self._autosave = autosave
         self.path = path
 
         if ext:
