@@ -45,7 +45,7 @@ class ReadSettings:
                 if self.ext == "json":
                     self.data = json.load(f)
                 elif self.ext in ["yml", "yaml"]:
-                    self.data = yaml.load(f)
+                    self.data = yaml.safe_load(f)
                 elif self.ext == "ini":
                     self.data = configparser.ConfigParser()
                     self.data.read_file(f)
