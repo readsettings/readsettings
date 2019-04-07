@@ -25,7 +25,7 @@ class ReadSettings:
     >>> data["foo"]
     'Hello World'
     """
-
+    
     def __init__(self, path, ext=None):
         self._autosave = True
         self.path = path
@@ -41,7 +41,7 @@ class ReadSettings:
             with open(self.path, "r") as f:
                 if self.ext == "json":
                     self.data = json.load(f)
-                elif self.ext == "yaml":
+                elif self.ext in ["yml", "yaml"]:
                     self.data = yaml.load(f)
                 elif self.ext == "ini":
                     self.data = configparser.ConfigParser()
@@ -84,7 +84,7 @@ class ReadSettings:
         with open(self.path, "w") as f:
             if self.ext == "json":
                 json.dump(self.data, f)
-            elif self.ext == "yaml":
+            elif self.ext in ["yml", "yaml"]:
                 yaml.dump(
                     self.data, f, default_flow_style=False, allow_unicode=True)
             elif self.ext == "ini":
