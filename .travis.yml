@@ -2,7 +2,12 @@ dist:                              xenial
 
 language:                          python
 
-python:                            3.7
+python:
+    - 3.4
+    - 3.5
+    - 3.6
+    - 3.7
+    - 3.8-dev
 
 script:
     - python -m doctest readsettings/__init__.py
