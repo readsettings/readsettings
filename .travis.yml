@@ -1,14 +1,42 @@
-dist:             xenial
+dist:                              xenial
 
-language:         python
+language:                          python
 
-python:           3.7
-
-before_script:
-    - cd src
+python:                            3.7
 
 script:
     - python ./readsettings/__init__.py
 
+jobs:
+    include:
+        - stage:                   deploy
+
+          python:                  3.7
+
+          if:                      type != pull_request AND tag IS present
+
+          install:
+              - pip install setuptools-git-version
+
+          script:                  true
+
+          deploy:
+              - provider:          pypi
+                user:              "Richienb"
+                password:          $pypi_password
+                skip_cleanup:      true
+                server:            https://test.pypi.org/legacy/
+                distributions:     "sdist bdist_wheel"
+                on:
+                    all_branches:  true
+
+              - provider:          pypi
+                user:              "Richienb"
+                password:          $pypi_password
+                skip_cleanup:      true
+                distributions:     "sdist bdist_wheel"
+                on:
+                    all_branches:  true
+
 notifications:
-    email:        false
+    email:                         false
