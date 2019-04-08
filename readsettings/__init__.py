@@ -118,13 +118,24 @@ class ReadSettings:
 
         if self._autosave:
             self.save()
-
-    def json(self):
+        
+    
+    def json(self, value=None):
         """
-        Get the raw contents of the settings file.
+        Get or set the json object of the settings file.
+
+		:type value: object
+        :param value: Optionally set the JSON value instead of getting it.
 
         >>> data = ReadSettings("settings-test.json")
         >>> data.json()
         {}
+        >>> data.json({"foo": "bar"})
+        {'foo': 'bar'}
         """
+        
+        if value:
+            self.data = value if isinstance(value, dict) else json.load(value)
+            if self._autosave:
+                self.save()
         return self.data
