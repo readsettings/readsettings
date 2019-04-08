@@ -17,7 +17,7 @@ class ReadSettings:
 
     :type ext: string
     :param ext: Override the file type.
-    
+
     :type autosave: boolean
     :param autosave: Set the autosave behaviour. Default is True.
 
@@ -28,7 +28,7 @@ class ReadSettings:
     >>> data["foo"]
     'Hello World'
     """
-    
+
     def __init__(self, path, ext=None, autosave=True):
         self._autosave = autosave
         self.path = path
