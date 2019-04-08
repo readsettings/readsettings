@@ -91,7 +91,9 @@ class ReadSettings:
                 yaml.dump(
                     self.data, f, default_flow_style=False, allow_unicode=True)
             elif self.ext == "ini":
-                self.data.write(f)
+                config = configparser.ConfigParser()
+                config = self.data
+                config.write(f)
             elif self.ext == "toml":
                 toml.dump(self.data, f)
 
