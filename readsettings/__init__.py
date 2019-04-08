@@ -3,10 +3,9 @@ Easily manage a customized settings file in JSON, YML, YAML, INI or TOML which y
 """
 import json
 import yaml
-import configparser
 import toml
 from pathlib import Path
-
+        
 
 class ReadSettings:
     """
@@ -46,9 +45,6 @@ class ReadSettings:
                     self.data = json.load(f)
                 elif self.ext in ["yml", "yaml"]:
                     self.data = yaml.safe_load(f)
-                elif self.ext == "ini":
-                    self.data = configparser.ConfigParser()
-                    self.data.read_file(f)
                 elif self.ext == "toml":
                     self.data = toml.load(f, _dict=dict)
                 else:
@@ -90,10 +86,6 @@ class ReadSettings:
             elif self.ext in ["yml", "yaml"]:
                 yaml.dump(
                     self.data, f, default_flow_style=False, allow_unicode=True)
-            elif self.ext == "ini":
-                config = configparser.ConfigParser()
-                config = self.data
-                config.write(f)
             elif self.ext == "toml":
                 toml.dump(self.data, f)
 
