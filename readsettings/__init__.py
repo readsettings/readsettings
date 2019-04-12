@@ -124,7 +124,7 @@ class ReadSettings:
         """
         Get or set the json object of the settings file.
 
-		:type value: object
+	:type value: object
         :param value: Optionally set the JSON value instead of getting it.
 
         >>> data = ReadSettings("settings-test.json")
