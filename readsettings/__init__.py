@@ -1,11 +1,9 @@
-"""
-Easily manage a customized settings file in JSON, YML, YAML or TOML which you can use for storing all of the settings for your application
-"""
+"""Easily manage a customized settings file in JSON, YML, YAML or TOML which you can use for storing all of the settings for your application."""
 import json
 import yaml
 import toml
 from pathlib import Path
-        
+
 
 class ReadSettings:
     """
@@ -29,6 +27,7 @@ class ReadSettings:
     """
 
     def __init__(self, path, ext=None, autosave=True):
+        """Initialise function."""
         self._autosave = autosave
         self.path = path
 
@@ -118,13 +117,12 @@ class ReadSettings:
 
         if self._autosave:
             self.save()
-        
-    
+
     def json(self, value=None):
         """
         Get or set the json object of the settings file.
 
-		:type value: object
+        :type value: object
         :param value: Optionally set the JSON value instead of getting it.
 
         >>> data = ReadSettings("settings-test.json")
@@ -133,7 +131,6 @@ class ReadSettings:
         >>> data.json({"foo": "bar"})
         {'foo': 'bar'}
         """
-        
         if value:
             self.data = value if isinstance(value, dict) else json.load(value)
             if self._autosave:
