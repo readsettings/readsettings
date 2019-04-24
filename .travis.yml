@@ -9,8 +9,15 @@ python:
     - 3.7
     - 3.8-dev
 
+install:
+    - pip install -r requirements.txt
+    - pip install codecov~=2.0.15
+
 script:
     - coverage run readsettings/__init__.py
+    
+after_success:
+    - codecov
 
 jobs:
     include:
@@ -18,7 +25,7 @@ jobs:
 
           python:                  3.7
 
-          if:                      type != pull_request
+          if:                      type != pull_request AND tag IS present
 
           install:
               - pip install -r requirements.txt
@@ -65,16 +72,14 @@ jobs:
                 skip_cleanup:      true
                 server:            https://test.pypi.org/legacy/
                 distributions:     "sdist bdist_wheel"
-                on:
-                    all_branches:  true
 
               - provider:          pypi
                 user:              "Richienb"
                 password:          $pypi_password
                 skip_cleanup:      true
                 distributions:     "sdist bdist_wheel"
-                on:
-                    all_branches:  true
+
+          after_success:           true
 
 notifications:
     email:                         false
