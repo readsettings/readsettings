@@ -11,7 +11,7 @@ python:
 
 install:
     - pip install -r requirements.txt
-    - pip install codecov
+    - pip install codecov~=2.0.15
 
 script:
     - coverage run readsettings/__init__.py
