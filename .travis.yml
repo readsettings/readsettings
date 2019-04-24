@@ -17,7 +17,7 @@ install:
 
 script:
     - coverage run readsettings/__init__.py
-    
+
 after_success:
     - codecov
 
@@ -77,7 +77,7 @@ jobs:
                 server:         https://test.pypi.org/legacy/
                 distributions:  "sdist bdist_wheel"
                 on:
-                    branch:     master
+                    tags:       true
 
               - provider:       pypi
                 user:           "Richienb"
@@ -85,7 +85,7 @@ jobs:
                 skip_cleanup:   true
                 distributions:  "sdist bdist_wheel"
                 on:
-                    branch:     master
+                    tags:       true
 
           after_success:        true
 
