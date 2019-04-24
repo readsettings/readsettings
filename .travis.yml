@@ -9,6 +9,9 @@ python:
     - 3.7
     - 3.8-dev
 
+install:
+    - pip install coverage
+
 script:
     - coverage run readsettings/__init__.py
 
