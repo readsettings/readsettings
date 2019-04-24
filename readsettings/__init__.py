@@ -76,7 +76,7 @@ class ReadSettings:
         >>> data["bar"] = "Lorem Ipsum"
         >>> data.save()
         """
-        Path.mkdir(Path(self.path).parent, exist_ok=True)
+        Path(self.path).parent.mkdir(exist_ok=True)
         with open(self.path, "w") as f:
             if self.ext == "json":
                 json.dump(self.data, f, ensure_ascii=False)
