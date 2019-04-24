@@ -34,8 +34,7 @@ class ReadSettings:
 
         if self.ext not in ["json", "yml", "yaml", "toml"]:
             raise ValueError("Invalid file type provided!")
-
-        if not Path(path).is_file():
+        elif not Path(path).is_file():
             self.data = {}
         else:
             with open(self.path, "r") as f:
