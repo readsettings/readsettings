@@ -24,6 +24,7 @@ class ReadSettings:
     >>> data["foo"] = "Hello World"
     >>> data["foo"]
     'Hello World'
+    >>> del data["foo"]
     """
 
     def __init__(self, path, ext=None, autosave=True):
