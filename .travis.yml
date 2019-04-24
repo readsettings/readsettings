@@ -1,6 +1,6 @@
-dist:                              xenial
+dist:                           xenial
 
-language:                          python
+language:                       python
 
 python:
     - 3.4
@@ -21,11 +21,11 @@ after_success:
 
 jobs:
     include:
-        - stage:                   deploy
+        - stage:                deploy
 
-          python:                  3.7
+          python:               3.7
 
-          if:                      type != pull_request AND tag IS present
+          if:                   type != pull_request AND tag IS present
 
           install:
               - pip install -r requirements.txt
@@ -35,14 +35,16 @@ jobs:
               - make html
 
           deploy:
-              provider:            pages
-              skip_cleanup:        true
-              github_commit:       "Built documentation [skip ci]"
-              github_token:        $github_token
-              name:                "ROS Bot"
-              email:               "richiebendall@gmail.com"
-              fqdn:                "readsettings.richie-bendall.ml"
-              local_dir:           build/html
+              provider:         pages
+              skip_cleanup:     true
+              github_commit:    "Built documentation [skip ci]"
+              github_token:     $github_token
+              name:             "ROS Bot"
+              email:            "richiebendall@gmail.com"
+              fqdn:             "readsettings.richie-bendall.ml"
+              local_dir:        build/html
+              on:
+                  branch:       master
 
           after_deploy:
               - |
@@ -52,34 +54,38 @@ jobs:
                  --header "Content-Type: application/json" \
                  --data '{"purge_everything":true}'
 
-          after_success:           true
+          after_success:        true
 
         -
 
-          python:                  3.7
+          python:               3.7
 
-          if:                      type != pull_request AND tag IS present
+          if:                   type != pull_request AND tag IS present
 
           install:
               - pip install setuptools-git-version
 
-          script:                  true
+          script:               true
 
           deploy:
-              - provider:          pypi
-                user:              "Richienb"
-                password:          $pypi_password
-                skip_cleanup:      true
-                server:            https://test.pypi.org/legacy/
-                distributions:     "sdist bdist_wheel"
+              - provider:       pypi
+                user:           "Richienb"
+                password:       $pypi_password
+                skip_cleanup:   true
+                server:         https://test.pypi.org/legacy/
+                distributions:  "sdist bdist_wheel"
+                on:
+                    branch:     master
 
-              - provider:          pypi
-                user:              "Richienb"
-                password:          $pypi_password
-                skip_cleanup:      true
-                distributions:     "sdist bdist_wheel"
+              - provider:       pypi
+                user:           "Richienb"
+                password:       $pypi_password
+                skip_cleanup:   true
+                distributions:  "sdist bdist_wheel"
+                on:
+                    branch:     master
 
-          after_success:           true
+          after_success:        true
 
 notifications:
-    email:                         false
+    email:                      false
