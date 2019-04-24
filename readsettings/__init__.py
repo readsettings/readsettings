@@ -20,7 +20,7 @@ class ReadSettings:
 
     :raises ValueError: Invalid file type provided!
 
-    >>> data = ReadSettings("settings-test.json")
+    >>> data = ReadSettings(".rs-tmp/t1.json")
     >>> data["foo"] = "Hello World"
     >>> data["foo"]
     'Hello World'
@@ -30,11 +30,10 @@ class ReadSettings:
         """Initialise function."""
         self._autosave = autosave
         self.path = path
+        self.ext = ext if ext else path.split(".")[-1]
 
-        if ext:
-            self.ext = ext
-        else:
-            self.ext = path.split(".")[-1]
+        if self.ext not in ["json", "yml", "yaml", "toml"]:
+            raise ValueError("Invalid file type provided!")
 
         if not Path(path).is_file():
             self.data = {}
@@ -46,8 +45,6 @@ class ReadSettings:
                     self.data = yaml.safe_load(f)
                 elif self.ext == "toml":
                     self.data = toml.load(f, _dict=dict)
-                else:
-                    raise ValueError("Invalid file type provided!")
 
     def autosave(self, option=None):
         """
@@ -59,7 +56,7 @@ class ReadSettings:
         :rtype: boolean
         :return: The new autosave state or the current one.
 
-        >>> data = ReadSettings("settings-test.json")
+        >>> data = ReadSettings(".rs-tmp/t2.json")
         >>> data.autosave()
         True
         >>> data.autosave(False)
@@ -75,30 +72,19 @@ class ReadSettings:
         """
         Force a file save.
 
-        >>> data = ReadSettings("settings-test.json")
+        >>> data = ReadSettings(".rs-tmp/t3.json")
         >>> data["bar"] = "Lorem Ipsum"
         >>> data.save()
         """
+        Path.mkdir(Path(self.path).parent, exist_ok=True)
         with open(self.path, "w") as f:
             if self.ext == "json":
-                json.dump(self.data, f)
+                json.dump(self.data, f, ensure_ascii=False)
             elif self.ext in ["yml", "yaml"]:
                 yaml.dump(
                     self.data, f, default_flow_style=False, allow_unicode=True)
             elif self.ext == "toml":
                 toml.dump(self.data, f)
-
-    def clear(self):
-        """
-        Clear the settings.
-
-        >>> data = ReadSettings("settings-test.json")
-        >>> data.clear()
-        """
-        self.data = {}
-
-        if self._autosave:
-            self.save()
 
     def __getitem__(self, name):
         """Get the value of a setting."""
@@ -125,14 +111,33 @@ class ReadSettings:
         :type value: object
         :param value: Optionally set the JSON value instead of getting it.
 
-        >>> data = ReadSettings("settings-test.json")
+        >>> data = ReadSettings(".rs-tmp/t3.json")
         >>> data.json()
         {}
         >>> data.json({"foo": "bar"})
         {'foo': 'bar'}
         """
         if value:
-            self.data = value if isinstance(value, dict) else json.load(value)
+            self.data = value if isinstance(value, dict) else json.loads(value)
             if self._autosave:
                 self.save()
         return self.data
+
+    def clear(self):
+        """
+        Explicit function to clear the settings.
+
+        >>> data = ReadSettings(".rs-tmp/t4.json")
+        >>> data.clear()
+        >>> data.json()
+        {}
+        """
+        self.json({})
+
+
+if __name__ == "__main__":
+    import shutil
+    shutil.rmtree(".rs-tmp", ignore_errors=True)
+
+    import doctest
+    doctest.testmod()

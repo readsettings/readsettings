@@ -10,7 +10,7 @@ python:
     - 3.8-dev
 
 script:
-    - python -m doctest readsettings/__init__.py
+    - coverage run readsettings/__init__.py
 
 jobs:
     include:
