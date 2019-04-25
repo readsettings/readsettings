@@ -118,7 +118,7 @@ class ReadSettings:
         {'foo': 'bar'}
         """
         if value:
-            self.data = value if isinstance(value, dict) else json.loads(value)
+            self.data = json.loads(value) if isinstance(value, (str, bytes, bytearray)) else value
             if self._autosave:
                 self.save()
         return self.data
