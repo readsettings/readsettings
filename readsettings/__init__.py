@@ -25,11 +25,20 @@ class ReadSettings:
     >>> data["foo"]
     'Hello World'
     >>> del data["foo"]
-    
+
     >>> data = ReadSettings(".rs-tmp/t0.invalid")
     Traceback (most recent call last):
       ...
     ValueError: Invalid file type provided!
+
+    >>> data = ReadSettings(".rs-tmp/t6.json")
+    >>> data["helloWorld"] = "newValue"
+
+    >>> data = ReadSettings(".rs-tmp/t1.yml")
+    >>> data["helloWorld"] = "newValue"
+
+    >>> data = ReadSettings(".rs-tmp/t1.toml")
+    >>> data["helloWorld"] = "newValue"
     """
 
     def __init__(self, path, ext=None, autosave=True):
@@ -116,11 +125,13 @@ class ReadSettings:
         :type value: object
         :param value: Optionally set the JSON value instead of getting it.
 
-        >>> data = ReadSettings(".rs-tmp/t3.json")
+        >>> data = ReadSettings(".rs-tmp/t4.json")
         >>> data.json()
         {}
         >>> data.json({"foo": "bar"})
         {'foo': 'bar'}
+        >>> data.json(["a", "b", "c"])
+        ['a', 'b', 'c']
         """
         if value:
             self.data = json.loads(value) if isinstance(value, (str, bytes, bytearray)) else value
@@ -132,7 +143,7 @@ class ReadSettings:
         """
         Explicit function to clear the settings.
 
-        >>> data = ReadSettings(".rs-tmp/t4.json")
+        >>> data = ReadSettings(".rs-tmp/t5.json")
         >>> data.clear()
         >>> data.json()
         {}
@@ -143,6 +154,17 @@ class ReadSettings:
 if __name__ == "__main__":
     import shutil
     shutil.rmtree(".rs-tmp", ignore_errors=True)
+
+    Path(".rs-tmp").mkdir(exist_ok=True)
+
+    with open(".rs-tmp/t6.json", "w") as f:
+        f.write('{"helloWorld": "helloValue"}')
+
+    with open(".rs-tmp/t1.yml", "w") as f:
+        f.write("helloWorld:\n    - helloValue")
+
+    with open(".rs-tmp/t1.toml", "w") as f:
+        f.write('helloWorld = "helloValue"')
 
     import doctest
     doctest.testmod()
