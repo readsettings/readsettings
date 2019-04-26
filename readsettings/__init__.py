@@ -25,6 +25,11 @@ class ReadSettings:
     >>> data["foo"]
     'Hello World'
     >>> del data["foo"]
+    
+    >>> data = ReadSettings(".rs-tmp/t0.invalid")
+    Traceback (most recent call last):
+      ...
+    ValueError: Invalid file type provided!
     """
 
     def __init__(self, path, ext=None, autosave=True):
