@@ -2,7 +2,15 @@
 import json
 import yaml
 import toml
+import sys
 from pathlib import Path
+
+
+def _mkdir(dir):
+    if sys.version_info[0] >= 3 and sys.version_info[1] >= 5:
+        dir.mkdir(exist_ok=True)
+    else:
+        dir.mkdir()
 
 
 class ReadSettings:
@@ -90,7 +98,7 @@ class ReadSettings:
         >>> data["bar"] = "Lorem Ipsum"
         >>> data.save()
         """
-        Path(self.path).parent.mkdir(exist_ok=True)
+        _mkdir(Path(self.path).parent)
         with open(self.path, "w") as f:
             if self.ext == "json":
                 json.dump(self.data, f, ensure_ascii=False)
@@ -134,7 +142,8 @@ class ReadSettings:
         ['a', 'b', 'c']
         """
         if value:
-            self.data = json.loads(value) if isinstance(value, (str, bytes, bytearray)) else value
+            self.data = json.loads(value) if isinstance(
+                value, (str, bytes, bytearray)) else value
             if self._autosave:
                 self.save()
         return self.data
@@ -155,7 +164,7 @@ if __name__ == "__main__":
     import shutil
     shutil.rmtree(".rs-tmp", ignore_errors=True)
 
-    Path(".rs-tmp").mkdir(exist_ok=True)
+    _mkdir(Path(".rs-tmp"))
 
     with open(".rs-tmp/t6.json", "w") as f:
         f.write('{"helloWorld": "helloValue"}')
