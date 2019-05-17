@@ -6,11 +6,14 @@ import sys
 from pathlib import Path
 
 
-def _mkdir(dir):
+def _mkdir(path):
     if sys.version_info[0] >= 3 and sys.version_info[1] >= 5:
-        dir.mkdir(exist_ok=True)
+        path.mkdir(exist_ok=True)
     else:
-        dir.mkdir()
+        try:
+            path.mkdir()
+        except FileExistsError:
+            pass
 
 
 class ReadSettings:
