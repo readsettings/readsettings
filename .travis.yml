@@ -35,7 +35,7 @@ jobs:
 
           script:
               - make jekyll
-              - echo "remote_theme: Richienb/jekyll-theme-richienb" > build/jekyll/_config.yml
+              - cp _config.yml build/jekyll/_config.yml
 
           deploy:
               provider:         pages
