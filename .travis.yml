@@ -31,10 +31,11 @@ jobs:
 
           install:
               - pip install -r requirements.txt
-              - pip install sphinx python-docs-theme
+              - pip install sphinx sphinx_jekyll_builder
 
           script:
-              - make html
+              - make jekyll
+              - echo "remote_theme: Richienb/jekyll-theme-richienb" > build/jekyll/_config.yml
 
           deploy:
               provider:         pages
@@ -44,7 +45,7 @@ jobs:
               name:             "ROS Bot"
               email:            "richiebendall@gmail.com"
               fqdn:             "readsettings.richie-bendall.ml"
-              local_dir:        build/html
+              local_dir:        build/jekyll
               on:
                   tags:         true
 
