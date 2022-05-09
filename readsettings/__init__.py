@@ -52,18 +52,19 @@ class ReadSettings:
     >>> data["helloWorld"] = "newValue"
     """
 
-    def __init__(self, path, ext=None, autosave=True):
+    def __init__(self, path, ext=None, autosave=True, encoding="utf-8"):
         """Initialise function."""
         self._autosave = autosave
         self.path = path
         self.ext = ext if ext else path.split(".")[-1]
+        self.encoding = encoding
 
         if self.ext not in ["json", "yml", "yaml", "toml"]:
             raise ValueError("Invalid file type provided!")
         elif not Path(path).is_file():
             self.data = {}
         else:
-            with open(self.path, "r") as f:
+            with open(self.path, "r", encoding=self.encoding) as f:
                 if self.ext == "json":
                     self.data = json.load(f)
                 elif self.ext in ["yml", "yaml"]:
@@ -102,7 +103,7 @@ class ReadSettings:
         >>> data.save()
         """
         _mkdir(Path(self.path).parent)
-        with open(self.path, "w") as f:
+        with open(self.path, "w", encoding=self.encoding) as f:
             if self.ext == "json":
                 json.dump(self.data, f, ensure_ascii=False)
             elif self.ext in ["yml", "yaml"]:
@@ -169,13 +170,13 @@ if __name__ == "__main__":
 
     _mkdir(Path(".rs-tmp"))
 
-    with open(".rs-tmp/t6.json", "w") as f:
+    with open(".rs-tmp/t6.json", "w", encoding=self.encoding) as f:
         f.write('{"helloWorld": "helloValue"}')
 
-    with open(".rs-tmp/t1.yml", "w") as f:
+    with open(".rs-tmp/t1.yml", "w", encoding=self.encoding) as f:
         f.write("helloWorld:\n    - helloValue")
 
-    with open(".rs-tmp/t1.toml", "w") as f:
+    with open(".rs-tmp/t1.toml", "w", encoding=self.encoding) as f:
         f.write('helloWorld = "helloValue"')
 
     import doctest
