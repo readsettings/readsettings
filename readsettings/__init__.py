@@ -19,45 +19,36 @@ def _mkdir(path):
 class ReadSettings:
     """
     Main ReadSettings class.
-
     :type path: string
     :param path: The settings file to use.
-
     :type ext: string
     :param ext: Override the file type.
-
     :type autosave: boolean
     :param autosave: Set the autosave behaviour. Default is True.
-
     :raises ValueError: Invalid file type provided!
-
     >>> data = ReadSettings(".rs-tmp/t1.json")
     >>> data["foo"] = "Hello World"
     >>> data["foo"]
     'Hello World'
     >>> del data["foo"]
-
     >>> data = ReadSettings(".rs-tmp/t0.invalid")
     Traceback (most recent call last):
       ...
     ValueError: Invalid file type provided!
-
     >>> data = ReadSettings(".rs-tmp/t6.json")
     >>> data["helloWorld"] = "newValue"
-
     >>> data = ReadSettings(".rs-tmp/t1.yml")
     >>> data["helloWorld"] = "newValue"
-
     >>> data = ReadSettings(".rs-tmp/t1.toml")
     >>> data["helloWorld"] = "newValue"
     """
 
-    def __init__(self, path, ext=None, autosave=True, encoding="utf-8"):
+    def __init__(self, path, ext=None, autosave=True, encoding=None):
         """Initialise function."""
         self._autosave = autosave
         self.path = path
         self.ext = ext if ext else path.split(".")[-1]
-        self.encoding = encoding
+        self.encoding = encoding or sys.getdefaultencoding()
 
         if self.ext not in ["json", "yml", "yaml", "toml"]:
             raise ValueError("Invalid file type provided!")
@@ -75,13 +66,10 @@ class ReadSettings:
     def autosave(self, option=None):
         """
         Configure autosaving.
-
         :type option: boolean
         :param option: The state to set autosave to. If not provided, it will return the current value.
-
         :rtype: boolean
         :return: The new autosave state or the current one.
-
         >>> data = ReadSettings(".rs-tmp/t2.json")
         >>> data.autosave()
         True
@@ -97,7 +85,6 @@ class ReadSettings:
     def save(self):
         """
         Force a file save.
-
         >>> data = ReadSettings(".rs-tmp/t3.json")
         >>> data["bar"] = "Lorem Ipsum"
         >>> data.save()
@@ -133,10 +120,8 @@ class ReadSettings:
     def json(self, value=None):
         """
         Get or set the json object of the settings file.
-
         :type value: object
         :param value: Optionally set the JSON value instead of getting it.
-
         >>> data = ReadSettings(".rs-tmp/t4.json")
         >>> data.json()
         {}
@@ -155,7 +140,6 @@ class ReadSettings:
     def clear(self):
         """
         Explicit function to clear the settings.
-
         >>> data = ReadSettings(".rs-tmp/t5.json")
         >>> data.clear()
         >>> data.json()
@@ -170,13 +154,13 @@ if __name__ == "__main__":
 
     _mkdir(Path(".rs-tmp"))
 
-    with open(".rs-tmp/t6.json", "w", encoding=self.encoding) as f:
+    with open(".rs-tmp/t6.json", "w") as f:
         f.write('{"helloWorld": "helloValue"}')
 
-    with open(".rs-tmp/t1.yml", "w", encoding=self.encoding) as f:
+    with open(".rs-tmp/t1.yml", "w") as f:
         f.write("helloWorld:\n    - helloValue")
 
-    with open(".rs-tmp/t1.toml", "w", encoding=self.encoding) as f:
+    with open(".rs-tmp/t1.toml", "w") as f:
         f.write('helloWorld = "helloValue"')
 
     import doctest
