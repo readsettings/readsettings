@@ -52,7 +52,7 @@ class ReadSettings:
     >>> data["helloWorld"] = "newValue"
     """
 
-    def __init__(self, path, ext=None, autosave=True, encoding=sys.getdefaultencoding()):
+    def __init__(self, path, ext=None, autosave=True, encoding='utf8'):
         """Initialise function."""
         self._autosave = autosave
         self.path = path
