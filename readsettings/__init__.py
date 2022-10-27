@@ -29,6 +29,9 @@ class ReadSettings:
     :type autosave: boolean
     :param autosave: Set the autosave behaviour. Default is True.
 
+    :type encoding: string
+    :param encoding: Set settings file encoding. Default is ‘utf8’.
+
     :raises ValueError: Invalid file type provided!
 
     >>> data = ReadSettings(".rs-tmp/t1.json")
