@@ -29,6 +29,9 @@ class ReadSettings:
     :type autosave: boolean
     :param autosave: Set the autosave behaviour. Default is True.
 
+    :type encoding: string
+    param encoding: Set the encoding of the settings file. Default is ‘utf8’.
+
     :raises ValueError: Invalid file type provided!
 
     >>> data = ReadSettings(".rs-tmp/t1.json")
@@ -52,18 +55,19 @@ class ReadSettings:
     >>> data["helloWorld"] = "newValue"
     """
 
-    def __init__(self, path, ext=None, autosave=True):
+    def __init__(self, path, ext=None, autosave=True, encoding='utf8'):
         """Initialise function."""
         self._autosave = autosave
         self.path = path
         self.ext = ext if ext else path.split(".")[-1]
+        self.encoding = encoding
 
         if self.ext not in ["json", "yml", "yaml", "toml"]:
             raise ValueError("Invalid file type provided!")
         elif not Path(path).is_file():
             self.data = {}
         else:
-            with open(self.path, "r") as f:
+            with open(self.path, "r", encoding=self.encoding) as f:
                 if self.ext == "json":
                     self.data = json.load(f)
                 elif self.ext in ["yml", "yaml"]:
@@ -102,7 +106,7 @@ class ReadSettings:
         >>> data.save()
         """
         _mkdir(Path(self.path).parent)
-        with open(self.path, "w") as f:
+        with open(self.path, "w", encoding=self.encoding) as f:
             if self.ext == "json":
                 json.dump(self.data, f, ensure_ascii=False)
             elif self.ext in ["yml", "yaml"]:
