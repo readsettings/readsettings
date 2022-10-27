@@ -30,7 +30,7 @@ class ReadSettings:
     :param autosave: Set the autosave behaviour. Default is True.
 
     :type encoding: string
-    :param encoding: Set settings file encoding. Default is ‘utf8’.
+    param encoding: Set the encoding of the settings file. Default is ‘utf8’.
 
     :raises ValueError: Invalid file type provided!
 
